@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vuejs/vuejs-2.5.16.js"></script>
+    <script type="text/javascript" src="../js/vuejs/axios-0.18.0.js"></script>
+
+</head>
+<body>
+
+<center>
+    <div id="goodslist">
+        姓名:<input v-model="searchEntity.gname">
+        <input type="button" value="检索" @click="findAllConnAndPage"/>
+        <table>
+            <tr>
+                <th>商品名称</th>
+                <th>商品价格</th>
+                <th>库存</th>
+            </tr>
+            <tr v-for="p in list">
+                <td>{{p.gname}}</td>
+                <td>{{p.gprice}}</td>
+                <td>{{p.gstock}}</td>
+            </tr>
+            <tr>
+                <td colspan="100">
+                    当前{{pageInfo.pageNum}}/{{pageInfo.pages}}页；总计{{pageInfo.total}}条记录;
+                    <input type="button" value="首页" @click="paging(1)"/>
+                    <input type="button" value="上一页" @click="paging(pageInfo.prePage)"/>
+                    <input type="button" value="下一页" @click="paging(pageInfo.nextPage)"/>
+                    <input type="button" value="尾页" @click="paging(pageInfo.pages)"/>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <script type="text/javascript" src="../js/myjs/goods_list.js"></script>
+</center>
+</body>
+
+</html>
